@@ -5,7 +5,8 @@ require 'nokogiri'
 
 def get_data(month, day)
     url = "http://api.hiztory.org/births/#{month}/#{day}/1/15/api.xml"
-    Net::HTTP.get_response(URI.parse(url)).body
+    xml = Net::HTTP.get_response(URI.parse(url)).body
+    parse_data(xml)
 end
 
 def parse_data(xml_data)
@@ -16,8 +17,13 @@ def parse_data(xml_data)
         content = e.attr('content')
         data.push({ date: date, content: content })
     end
-    data
+    format_data(data)
 end
 
-xml = get_data(12, 20)
-data = parse_data(xml)
+def format_data(arr)
+    str = ''
+    arr.each do |hash| 
+        str += "#{ hash[:date] } --- #{ hash[:content] }\n"
+    end
+    str
+end
