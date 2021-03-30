@@ -11,10 +11,18 @@ Telegram::Bot::Client.run(token) do |bot|
         when '/end'
             bot.api.send_message(chat_id: message.chat.id, text: "Goodbye!")
         else
-            month = message.text[-5..-4]
-            day = message.text[-2..-1]
-            data = get_data(month, day)
-            bot.api.send_message(chat_id: message.chat.id, text: data)
+            unless /[0-9]{4}-[0-9]{2}-[0-9]{2}/ === message.text
+                bot.api.send_message(chat_id: message.chat.id, text: 'Invalid date (Use format YYY-MM-DD)')
+            else
+                month = message.text[-5..-4]
+                day = message.text[-2..-1]
+                data = get_data(month, day)
+                if data.empty?
+                    bot.api.send_message(chat_id: message.chat.id, text: 'Unable to process. Please check your date...')
+                else
+                    bot.api.send_message(chat_id: message.chat.id, text: data)
+                end
+            end
         end
     end
 end

@@ -21,7 +21,7 @@ def parse_data(xml_data)
 end
 
 def format_data(arr)
-    str = ''
+    str = "Here are the famous people born on the same day as you: \n\n"
     arr.each do |hash| 
         str += "#{ hash[:date] } --- #{ hash[:content] }\n"
     end
