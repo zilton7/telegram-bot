@@ -3,8 +3,6 @@ require './lib/process_data'
 
 token = '1738382169:AAHcVo5q0ChpInYEaMs0BJKvv_bIhkU3BJY'
 
-# rubocop: disable Style/CaseEquality
-
 Telegram::Bot::Client.run(token) do |bot|
   puts 'Bot is running in the background...'
   bot.listen do |message|
@@ -14,7 +12,7 @@ Telegram::Bot::Client.run(token) do |bot|
     when '/end'
       bot.api.send_message(chat_id: message.chat.id, text: 'Goodbye!')
     else
-      if /[0-9]{4}-[0-9]{2}-[0-9]{2}/ === message.text
+      if message.text =~ /[0-9]{4}-[0-9]{2}-[0-9]{2}/
         processor = DataProcessor.new
         month = message.text[-5..-4]
         day = message.text[-2..-1]
@@ -30,5 +28,3 @@ Telegram::Bot::Client.run(token) do |bot|
     end
   end
 end
-
-# rubocop: enable Style/CaseEquality
