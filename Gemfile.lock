@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    connection_pool (2.2.3)
+    libxml-ruby (3.2.1)
+    net-http-persistent (4.0.1)
+      connection_pool (~> 2.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  libxml-ruby
+  net-http-persistent (~> 4.0, >= 4.0.1)
+
+BUNDLED WITH
+   1.17.3
