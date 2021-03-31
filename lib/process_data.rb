@@ -3,6 +3,9 @@ require 'net/http'
 require 'nokogiri'
 
 class DataProcessor
+
+  attr_reader :data
+
   def initialize(month, day)
     @month = month
     @day = day
@@ -11,7 +14,7 @@ class DataProcessor
   def run
     xml = gather_data
     arr = parse_data(xml)
-    format_data(arr)
+    @data = format_data(arr)
   end
 
   private
