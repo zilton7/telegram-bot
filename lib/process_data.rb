@@ -30,10 +30,10 @@ class DataProcessor
       data.push({ date: date, content: content })
     end
 
-    if data.length > 0
-      return data
+    if data.length.positive?
+      data
     else
-      return 'nothing found'
+      'nothing found'
     end
   end
 
@@ -41,6 +41,7 @@ class DataProcessor
     str = "Here are the famous people born on the same day as you: \n\n"
     arr.each do |hash|
       return nil if hash[:date].nil? || hash[:content].nil?
+
       str += "#{hash[:date]} --- #{hash[:content]}\n"
     end
     str
