@@ -1,11 +1,11 @@
 require_relative '../lib/process_data'
 
-processor = DataProcessor.new
+processor = DataProcessor.new('12', '20')
 
 describe DataProcessor do
   describe '#gather_data' do
     it 'Returns array of parsed data' do
-      expect(processor.gather_data('12', '20')).to be_a(String)
+      expect(processor.gather_data).to be_a(String)
     end
   end
 
