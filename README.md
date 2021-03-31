@@ -3,7 +3,7 @@
 # RUBY CAPSTONE PROJECT: TELEGRAM BOT
 
 I was asked to create a Telegram bot. For this project I have used couple gems and 
-hiztory.org API.
+hiztory.org API. The Bot waits for user's birth-date input and than checks if its valid date and if so it fetches the data from the external API. This data consists of famous people born on the same month/day. All this information is returned to the user as a Telegram message.
 
 ![screenshot](./app-screenshot.png)
 
