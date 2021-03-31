@@ -3,8 +3,20 @@ require 'net/http'
 require 'nokogiri'
 
 class DataProcessor
-  def gather_data(month, day)
-    url = "http://api.hiztory.org/births/#{month}/#{day}/1/15/api.xml"
+  def initialize(month, day)
+    @month = month
+    @day = day
+  end
+
+  def run
+    xml = gather_data
+    arr = parse_data(xml)
+    format_data(arr)
+  end
+
+  private
+  def gather_data
+    url = "http://api.hiztory.org/births/#{@month}/#{@day}/1/15/api.xml"
     Net::HTTP.get_response(URI.parse(url)).body
   end
 
@@ -27,9 +39,4 @@ class DataProcessor
     str
   end
 
-  def run(month, day)
-    xml = gather_data(month, day)
-    arr = parse_data(xml)
-    format_data(arr)
-  end
 end
