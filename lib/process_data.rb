@@ -29,12 +29,18 @@ class DataProcessor
       content = e.attr('content')
       data.push({ date: date, content: content })
     end
-    data
+
+    if data.length > 0
+      return data
+    else
+      return 'nothing found'
+    end
   end
 
   def format_data(arr)
     str = "Here are the famous people born on the same day as you: \n\n"
     arr.each do |hash|
+      return nil if hash[:date].nil? || hash[:content].nil?
       str += "#{hash[:date]} --- #{hash[:content]}\n"
     end
     str

@@ -38,6 +38,29 @@ class Bot
     end
   end
 
+  def extract_month(str)
+    result = str[-5..-4]
+    if result =~ /[0-9]{2}/
+        result
+    else
+        nil
+    end
+
+  end
+
+  def extract_day(str)
+    result = str[-2..-1]
+    if result =~ /[0-9]{2}/
+        result
+    else
+        nil
+    end
+  end
+
+  def valid_date?(str)
+    str =~ /[0-9]{4}-[0-9]{2}-[0-9]{2}/
+  end
+
   private
 
   def send_hello(bot_obj, message_obj)
@@ -56,17 +79,6 @@ class Bot
     bot_obj.api.send_message(chat_id: message_obj.chat.id, text: 'Invalid date (Use format YYYY-MM-DD)')
   end
 
-  def valid_date?(str)
-    str =~ /[0-9]{4}-[0-9]{2}-[0-9]{2}/
-  end
-
-  def extract_month(str)
-    str[-5..-4]
-  end
-
-  def extract_day(str)
-    str[-5..-4]
-  end
 end
 
 # rubocop: enable Metrics/MethodLength: Method has too many lines

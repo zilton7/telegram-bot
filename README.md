@@ -13,8 +13,14 @@ hiztory.org API.
 
 ## Getting Started
 To get a local copy up and running follow these simple example steps:
-- Clone the repository as indicated by Setup section below
-- In the local directory in which this repository is cloned, enter in the terminal or text-editor console: 
+
+1. Clone the repository as indicated by Setup section below
+2.  In the local directory in which this repository is cloned, enter in the terminal or text-editor console: 
+
+-  Rrun bundle to install all the dependancies:
+> `` bundle install ``
+
+- Then run this:
 > `` ruby bin/main.rb `` 
 
 - This will start the bot in your console. It will print 'Bot is running in the background...' to indicate that it is running.
