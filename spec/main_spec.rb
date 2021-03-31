@@ -1,4 +1,4 @@
-require './lib/process_data'
+require_relative '../lib/process_data'
 
 processor = DataProcessor.new
 

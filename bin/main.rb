@@ -1,5 +1,5 @@
 require 'telegram/bot'
-require './lib/process_data'
+require_relative '../lib/process_data'
 
 token = '1738382169:AAHcVo5q0ChpInYEaMs0BJKvv_bIhkU3BJY'
 
@@ -23,7 +23,7 @@ Telegram::Bot::Client.run(token) do |bot|
           bot.api.send_message(chat_id: message.chat.id, text: data)
         end
       else
-        bot.api.send_message(chat_id: message.chat.id, text: 'Invalid date (Use format YYY-MM-DD)')
+        bot.api.send_message(chat_id: message.chat.id, text: 'Invalid date (Use format YYYY-MM-DD)')
       end
     end
   end
